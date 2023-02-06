@@ -18,5 +18,4 @@ We switched the internal Sigmoid function for a ReLU activation function for the
 In the fifth one, we added one more hidden layer reaching the four. Also, we used Sigmoid as our activation function in every hidden layer, increased the epochs to 200 and decreased the learning rate to 0.001. 
 After about 150 iterations, we achieved the lowest MSE compared to the other variations we used.
 
-In the sixth NN, we had three hidden layers, switched to the ReLU activation function, used Tanh as the primary output function and switched to the Adam optimizer. Also, we decreased the epochs to 10 and increased the learning rate to 0.003. 
-In the ninth iteration, we saw the lowest MSE, but it was higher than other variations.
+In the sixth NN, we had three hidden layers, switched to the ReLU activation function, used Tanh as the primary output function and switched to the Adam optimizer. Also, we decreased the epochs to 10 and increased the learning rate to 0.003. All of these changes didn't reduce the MSE compared to the other variations we tried.
