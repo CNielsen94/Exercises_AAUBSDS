@@ -13,7 +13,7 @@ The second NN we went a bit deeper, and created a 3-layer NN, with the addition 
 
 The third NN we switched the internal Sigmoid function for a SiLU activation function, and also tried a learning_rate of 0.003. With this one, we saw the bend at which MSE decreases happening at a higher number of epochs, which made us increase number of these. Based on the plot, we could see that it had close to no improvemet after 7 epochs, but the changes from 5-7 were also not much to brag about.
 
-We switched the internal Sigmoid function for a ReLU activation function for the fourth NN and tried a learning rate of 0.005, increasing the epochs to 20. We also changed the number of neurons to 5 and 10 in every hidden layer, respectively. We saw that after 17 iterations, MSE dropped to its lower level.
+We switched the internal Sigmoid function for a ReLU activation function for the fourth NN and tried a learning rate of 0.005, increasing the epochs to 20. We also changed the number of neurons to 5 and 10 in every hidden layer, respectively. We saw that after 14 iterations, MSE dropped to its lower level.
 
 In the fifth one, we added one more hidden layer reaching the four. Also, we used Sigmoid as our activation function in every hidden layer, increased the epochs to 200 and decreased the learning rate to 0.001. 
 After about 150 iterations, we achieved the lowest MSE compared to the other variations we used.
