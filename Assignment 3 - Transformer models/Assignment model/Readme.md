@@ -1,1 +1,3 @@
+Our sbert transformer model is a sentence transformer model. The model is loaded from huggingface aswell as the data, from the data the vectors are then loaded into one of our indexes in pinecone. We set it up with a gradio desktop aswell, which allows for writing a sentence in the input box and then you receive the top 5 most "similar" videos from youtube. We suspect that the dataset containing the videos and the transcripts of the videos are biased towards data science and academic stuff in general, since most of our output is related to that in someway.
 
+We're looking into how we possibly could combine our text2image / audio similarity models with this sentence transformer model aswell.
