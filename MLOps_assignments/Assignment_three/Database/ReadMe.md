@@ -3,3 +3,5 @@ Database contains the following tables:
 2. 'employee_survey' - This table contains responds to a employee survey that asks employees to rate the workplace in a few different categories.
 3. 'manager_survey' - This table contains responds to a manager survey that asks managers to rate the workplace in a few different categories
 4. 'EmployeeTiers' - This table contains a few data variables that has been engineered into tiers rather than continuous variables for the purpose of EDA and increasing model performance.
+
+In addition the db file contains a variety of tables that relate to the MLFlow part of the assignment.
