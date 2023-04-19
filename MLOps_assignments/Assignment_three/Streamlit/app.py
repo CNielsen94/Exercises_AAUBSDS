@@ -65,7 +65,7 @@ def app():
         st.subheader("Exploratory Data Analysis (EDA)")
         st.title("Machine Learning Model Metrics")
         st.write(metrics_df)
-        url = 'https://github.com/CNielsen94/Exercises_AAUBSDS/blob/main/MLOps_assignments/Assignment_three/Database/mlruns/1/9e99a255ada3438badd5353d66b28e27/artifacts/feature_importances.png'
+        url = 'https://raw.githubusercontent.com/CNielsen94/Exercises_AAUBSDS/main/MLOps_assignments/Assignment_three/Database/mlruns/1/9e99a255ada3438badd5353d66b28e27/artifacts/feature_importances.png'
         filename = 'feature_importances.png'
         urllib.request.urlretrieve(url, filename)
         img = Image.open("feature_importances.png")
