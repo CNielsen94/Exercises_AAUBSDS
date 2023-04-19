@@ -4,6 +4,6 @@ The folders are set up as such
 
 Database - This folder contains our .db file as well as the setup for this.
 
-Model_EDA - This folder contains the notebooks we used to create the model and log the different metrics/artifacts. After this was run, we updated the database file to also contain these elements.
+Model_EDA - This folder contains the notebooks we used to create the model, perform a quick and dirty basic EDA as well as log the different metrics/artifacts of the model. After this was run, we updated the database file to also contain these elements.
 
 Streamlit - This folder contains the streamlit application file as well as the requirements.txt for running the application.
