@@ -3,4 +3,5 @@ pandas
 numpy
 matplotlib
 seaborn
-sqlite3
+mlflow
+Pillow
