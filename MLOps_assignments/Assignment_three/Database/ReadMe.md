@@ -5,3 +5,4 @@ Database contains the following tables:
 4. 'EmployeeTiers' - This table contains a few data variables that has been engineered into tiers rather than continuous variables for the purpose of EDA and increasing model performance.
 
 In addition the db file contains a variety of tables that relate to the MLFlow part of the assignment.
+We also uploaded the mlruns folder here in order to be able to access is more easily.
