@@ -1,10 +1,9 @@
-So for this assignment, we attempted to create an interface for the MLFlow and for the model EDA. We ran into complications with "Unexpected error with JSON input" for the gradio interface. This could be due to a few different things:
-1. The data pipeline might be having some errors, since we label encode the object columns in the dataframe for the training, but don't implement that for the gradio interface.
-2. The prediction function output doesn't match what gradio needs as an input.
-3. No other friggen clue
+So for this assignment, we attempted to create an interface for the MLFlow and for the model EDA. We ended up having quite a few issues with the streamlit application, and so the interface we ended up creating was a bit lacking in terms of detail, but there isn't really much to display for the MLFlow for this model.
 
-Instead we opted for the easier solution of just presenting our notebooks with the MLFlow implementation. The folders are sorted as such:
+The folders are set up as such
 
 Database - This folder contains our .db file as well as the setup for this.
 
 Model_EDA - This folder contains the notebooks we used to create the model and log the different metrics/artifacts. After this was run, we updated the database file to also contain these elements.
+
+Streamlit - This folder contains the streamlit application file as well as the requirements.txt for running the application.
