@@ -7,15 +7,21 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import mlflow
 from PIL import Image
-
+import os
 # Database connection
-print("Connecting to database...")
-url = 'https://github.com/CNielsen94/Exercises_AAUBSDS/blob/main/MLOps_assignments/Assignment_three/Database/HR_DB.db?raw=true'
-filename = 'HR_DB.db'
-urllib.request.urlretrieve(url, filename)
+#print("Connecting to database...")
+#url = 'https://github.com/CNielsen94/Exercises_AAUBSDS/blob/main/MLOps_assignments/Assignment_three/Database/HR_DB.db?raw=true'
+#filename = 'HR_DB.db'
+#urllib.request.urlretrieve(url, filename)
+# Set the path to the local database file
+database_path = os.path.join(os.path.dirname(__file__), "HR_DB.db")
 
-conn = sqlite3.connect('HR_DB.db')
+# Connect to the SQLite database
+conn = sqlite3.connect(database_path)
 print("Connection established.")
+
+
+
 
 # Setting up dataframe for EDA
 print("Loading dataframes...")
