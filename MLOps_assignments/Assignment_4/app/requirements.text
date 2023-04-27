@@ -1,0 +1,13 @@
+streamlit
+pandas
+numpy
+matplotlib
+seaborn
+mlflow
+Pillow
+joblib
+shap
+umap
+imblearn
+umap-learn
+mlflow
