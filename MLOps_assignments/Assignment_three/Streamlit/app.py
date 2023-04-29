@@ -85,6 +85,41 @@ if prediction == 0:
     st.success('You are not likely to churn.')
 else:
     st.success('You are likely to churn.')
+conn = sqlite3.connect('HR_DB.db')
+print("Connection established.")
 
-if __name__ == '__main__':
-    app()
+# Setting up dataframe for EDA
+print("Loading dataframes...")
+query = 'SELECT * FROM EmployeeTiers'
+employee_tiers = pd.read_sql(query, conn)
+
+query = 'SELECT * FROM manager_survey'
+manager_survey = pd.read_sql(query, conn)
+
+query = 'SELECT * FROM employee_survey'
+employee_survey = pd.read_sql(query, conn)
+
+query = 'SELECT * FROM general'
+df_general = pd.read_sql(query, conn)
+print("Dataframes loaded.")
+
+# Merging dataframe manager_survey to df_general based on 'EmployeeID'
+print("Merging dataframes...")
+df_general = df_general.merge(manager_survey[['EmployeeID', 'JobInvolvement', 'PerformanceRating', 'total_mn']], on='EmployeeID')
+df_EDA = df_general.merge(manager_survey[['EmployeeID', 'JobInvolvement', 'PerformanceRating', 'total_mn']], on='EmployeeID')
+# Merging dataframe employee_survey to df_general based on 'EmployeeID'
+df_general = df_general.merge(employee_survey[['EmployeeID', 'EnvironmentSatisfaction', 'JobSatisfaction', 'WorkLifeBalance', 'total_em']], on='EmployeeID')
+df_EDA = df_general.merge(manager_survey[['EmployeeID', 'JobInvolvement', 'PerformanceRating', 'total_mn']], on='EmployeeID')
+print("Dataframes merged.")
+
+# Dropping rows containing NaN-values
+print("Dropping rows with NaN values...")
+df_EDA.dropna(axis=0, inplace=True)
+df_general.dropna(axis=0, inplace=True)
+print("Rows dropped.")
+mlflow.set_tracking_uri("sqlite:///HR_DB.db")
+experiment_id = "1" 
+run_id = "9e99a255ada3438badd5353d66b28e27"
+# Get the metrics of your model 
+metrics = mlflow.get_run(run_id).data.metrics
+metrics_df = pd.DataFrame(metrics.items(), columns=["Metric", "Value"])
