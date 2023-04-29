@@ -12,7 +12,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 import os
 
-defaults = {'BusinessTravel': 'Travel_Rarely', 
+defaults = {'Age': 50,
+            'BusinessTravel': 'Travel_Rarely', 
             'Department': 'Research & Development', 
             'Education': 3, 
             'EducationField': 'Life Sciences', 
@@ -46,7 +47,7 @@ with open(os.path.join(BASE_DIR, 'model.pkl'), 'rb') as f:
     model = pickle.load(f)
 
 # Define the columns to collect from the user
-columns = ['BusinessTravel', 'Department', 'Education', 'EducationField', 'Gender',
+columns = ['Age', 'BusinessTravel', 'Department', 'Education', 'EducationField', 'Gender',
            'JobLevel', 'JobRole', 'MaritalStatus', 'NumCompaniesWorked',
            'PercentSalaryHike', 'StockOptionLevel', 'TrainingTimesLastYear',
            'YearsSinceLastPromotion', 'YearsWithCurrManager', 'JobInvolvement',
