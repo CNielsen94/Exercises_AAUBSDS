@@ -9,14 +9,17 @@ import mlflow
 from PIL import Image
 import pickle
 from sklearn.preprocessing import StandardScaler
+import os
+
 sc = StandardScaler()
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Database connection
 print("Connecting to database...")
 url = 'https://github.com/CNielsen94/Exercises_AAUBSDS/blob/main/MLOps_assignments/Assignment_three/Database/HR_DB.db?raw=true'
 filename = 'HR_DB.db'
 urllib.request.urlretrieve(url, filename)
 
-with open('Streamlit/model.pkl','rb') as f:
+with open(os.path.join(BASE_DIR, 'model.pkl'), 'rb') as f:
     model = pickle.load(f)
     
 age = st.text_input('Enter your age', value='')
