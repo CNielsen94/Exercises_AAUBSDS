@@ -63,9 +63,13 @@ for col in columns:
 # Convert the user input into a DataFrame
 input_df = pd.DataFrame(user_input, index=[0])
 input_df = input_df.fillna(defaults)
+
+#Create list of object data types in df
+others = input_df.select_dtypes('object').columns
+
 # Perform label encoding
 label_encoder = LabelEncoder()
-for col in ['BusinessTravel', 'Department', 'EducationField', 'Gender', 'JobRole', 'MaritalStatus']:
+for col in others:
     input_df[col] = label_encoder.fit_transform(input_df[col])
 
 # Perform standard scaling
