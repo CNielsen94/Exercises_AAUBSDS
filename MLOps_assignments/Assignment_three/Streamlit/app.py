@@ -16,7 +16,7 @@ url = 'https://github.com/CNielsen94/Exercises_AAUBSDS/blob/main/MLOps_assignmen
 filename = 'HR_DB.db'
 urllib.request.urlretrieve(url, filename)
 
-with open('model.pkl','rb') as f:
+with open('Streamlit/model.pkl','rb') as f:
     model = pickle.load(f)
     
 age = st.text_input('Enter your age', value='')
