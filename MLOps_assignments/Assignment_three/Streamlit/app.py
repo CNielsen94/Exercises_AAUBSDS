@@ -19,7 +19,7 @@ urllib.request.urlretrieve(url, filename)
 with open('model.pkl','rb') as f:
     model = pickle.load(f)
     
-age = st.text_input('Enter your age' value='')
+age = st.text_input('Enter your age', value='')
 income = st.slider('Select your monthly income', min_value=0, max_value=100000, step=100, value=5000)
 education = st.selectbox('Select your education level', ['High School', 'College', 'Graduate School'])
 
