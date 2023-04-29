@@ -9,9 +9,9 @@ import mlflow
 from PIL import Image
 import pickle
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import LabelEncoder
 import os
 
-sc = StandardScaler()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # Database connection
 print("Connecting to database...")
@@ -19,27 +19,45 @@ url = 'https://github.com/CNielsen94/Exercises_AAUBSDS/blob/main/MLOps_assignmen
 filename = 'HR_DB.db'
 urllib.request.urlretrieve(url, filename)
 
-with open(os.path.join(BASE_DIR, 'model.pkl'), 'rb') as f:
+# Load the model from the pkl file
+with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
-    
-age = st.text_input('Enter your age', value='')
-income = st.slider('Select your monthly income', min_value=0, max_value=100000, step=100, value=5000)
-education = st.selectbox('Select your education level', ['High School', 'College', 'Graduate School'])
 
-# Create a button widget to make the prediction
-if st.button('Predict'):
-    # Convert user inputs into a list
-    user_input = [age, income, education]
-    user_input = sc.fit_transform(user_input)
+# Define the columns to collect from the user
+columns = ['BusinessTravel', 'Department', 'Education', 'EducationField', 'Gender',
+           'JobLevel', 'JobRole', 'MaritalStatus', 'NumCompaniesWorked',
+           'PercentSalaryHike', 'StockOptionLevel', 'TrainingTimesLastYear',
+           'YearsSinceLastPromotion', 'YearsWithCurrManager', 'JobInvolvement',
+           'PerformanceRating', 'EnvironmentSatisfaction', 'JobSatisfaction',
+           'WorkLifeBalance']
 
-    # Use the model to make predictions
-    prediction = model.predict(user_input)
+# Create a dictionary to store the user input
+user_input = {}
 
-    # Display the prediction to the user
-    if prediction == 0:
-        st.success('You are not likely to churn.')
-    else:
-        st.success('You are likely to churn.')
+# Collect the user input using Streamlit widgets
+for col in columns:
+    user_input[col] = st.text_input(col)
+
+# Convert the user input into a DataFrame
+input_df = pd.DataFrame(user_input, index=[0])
+
+# Perform label encoding
+label_encoder = LabelEncoder()
+for col in ['BusinessTravel', 'Department', 'EducationField', 'Gender', 'JobRole', 'MaritalStatus']:
+    input_df[col] = label_encoder.fit_transform(input_df[col])
+
+# Perform standard scaling
+scaler = StandardScaler()
+input_df = scaler.fit_transform(input_df)
+
+# Make predictions using the model
+prediction = model.predict(input_df)
+
+# Display the prediction to the user
+if prediction == 0:
+    st.success('You are not likely to churn.')
+else:
+    st.success('You are likely to churn.')
 
 conn = sqlite3.connect('HR_DB.db')
 print("Connection established.")
