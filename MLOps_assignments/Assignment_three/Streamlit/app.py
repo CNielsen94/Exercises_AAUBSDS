@@ -20,7 +20,7 @@ filename = 'HR_DB.db'
 urllib.request.urlretrieve(url, filename)
 
 # Load the model from the pkl file
-with open('model.pkl', 'rb') as f:
+with open(os.path.join(BASE_DIR, 'model.pkl'), 'rb') as f:
     model = pickle.load(f)
 
 # Define the columns to collect from the user
