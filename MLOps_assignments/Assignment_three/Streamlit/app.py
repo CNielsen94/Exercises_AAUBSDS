@@ -7,12 +7,36 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import mlflow
 from PIL import Image
-
+import pickle
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
 # Database connection
 print("Connecting to database...")
 url = 'https://github.com/CNielsen94/Exercises_AAUBSDS/blob/main/MLOps_assignments/Assignment_three/Database/HR_DB.db?raw=true'
 filename = 'HR_DB.db'
 urllib.request.urlretrieve(url, filename)
+
+with open('model.pkl','rb') as f:
+    model = pickle.load(f)
+    
+age = st.text_input('Enter your age' value='')
+income = st.slider('Select your monthly income', min_value=0, max_value=100000, step=100, value=5000)
+education = st.selectbox('Select your education level', ['High School', 'College', 'Graduate School'])
+
+# Create a button widget to make the prediction
+if st.button('Predict'):
+    # Convert user inputs into a list
+    user_input = [age, income, education]
+    user_input = sc.fit_transform(user_input)
+
+    # Use the model to make predictions
+    prediction = model.predict(user_input)
+
+    # Display the prediction to the user
+    if prediction == 0:
+        st.success('You are not likely to churn.')
+    else:
+        st.success('You are likely to churn.')
 
 conn = sqlite3.connect('HR_DB.db')
 print("Connection established.")
