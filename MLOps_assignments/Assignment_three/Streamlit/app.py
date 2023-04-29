@@ -59,7 +59,7 @@ user_input = {}
 
 # Collect the user input using Streamlit widgets
 for col in columns:
-    user_input[col] = st.text_input(col)
+    user_input[col] = st.text_input(col, defaults[col])
 
 # Convert the user input into a DataFrame
 input_df = pd.DataFrame(user_input, index=[0])
