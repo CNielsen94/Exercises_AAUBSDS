@@ -12,6 +12,12 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
 import os
 
+# Set the page title and icon
+st.set_page_config(page_title="Employee Attrition Prediction App", page_icon=":guardsman:")
+
+# Add a big title to the top of the page
+st.title("Employee Attrition Prediction App")
+
 defaults = {'Age': 50,
             'BusinessTravel': 'Travel_Rarely', 
             'Department': 'Research & Development', 
