@@ -4,7 +4,7 @@ What we've basically done is to take the necessary ipynb files (maybe an extra o
 We updated the streamlit with the necessary data pipeline components to allow for prediction on user input, and added in default values to each text box to allow the user to play around with the app more easily. 
 Small bug in the code atm causes an error field to appear in the bottom, but it doesn't affect the functionality of the app.
 
-HOW TO RUN THE APP: You will need to clone this specific repository folder for assignment 4 and dockerize it before uploading and running the image to your desired cloud service. 
+HOW TO RUN THE APP: You will need to clone the app folder for assignment 4 and dockerize it before uploading and running the image to your desired cloud service. 
 Alternatively you can simply utilize our existing docker hub image from the links below.
 
 We've chosen to run the image on Google Run, since we can set the service so that the application will only spin up/run whenever a request happens. 
